@@ -1,0 +1,42 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ---- Entornos virtuales ----
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# ---- Logs y temporales ----
+*.log
+*.tmp
+*.swp
+*.swo
+
+# ---- Archivos de sistema ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Jupyter notebooks ----
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ---- VSCode / IDEs ----
+.vscode/
+.idea/
+*.code-workspace
+
+# ---- Otros ----
+*.bak
+*.orig
