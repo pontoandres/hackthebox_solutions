@@ -22,11 +22,20 @@ message += b"days all of them will be captured"
 c1 = bytes.fromhex(c1_hex)
 c2 = bytes.fromhex(c2_hex)
 iv = bytes.fromhex(iv_hex)
-
+ # forma 1 sacar K con K = c1 XOR plaintext 1 (message)
 keystream = bytes( [a^b for a,b, in zip(c1, message)] )
 
 print("Keystream (hex):", keystream.hex())
 
+#luego usar Flag = K XOR c2
 flag = bytes([a^b for a,b in zip(keystream, c2)])
 
 print("Flag (plaintext):", flag.decode("utf-8"))
+
+#forma 2 no hay necesidad de sacar K si se hace c1 XOR c2 = p1 XOR p2 (p1 y p2 son plaintext1 y plaintext2)
+p1XORp2 = bytes([a^b for a,b, in zip(c1, c2)])
+print("p1 XOR p2:", p1XORp2.hex())
+
+#luego sacamos p2 directamente usando p2 = (p1 XOR (p1XORp2 = c1XORc2))
+p2 = bytes([a^b for a,b in zip(p1XORp2, message)])
+print("Flag (plaintext) forma 2:", p2.decode("utf-8"))
